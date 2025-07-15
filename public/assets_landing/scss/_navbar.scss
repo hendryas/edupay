@@ -1,0 +1,165 @@
+/*--- navbar ---*/
+
+.affix-top {
+	top: 0;
+	padding-top: 10px;
+	border-bottom: 1px solid #ffffff4d;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover{
+	background: none;
+	border-bottom: 3px solid;
+}
+.search-nav {
+    margin-left: 150px;
+}
+.search-nav2{
+    margin-left: 280px;
+}
+#mainNav {
+	.container {
+		width: 1570px;
+	}
+}
+
+.navbar>.container .navbar-brand,
+.navbar>.container-fluid .navbar-brand {
+	margin-left: 0;
+	padding-top: 45px;
+}
+
+.navbar-right {
+	margin-right: 0;
+}
+
+.top-social a {
+	color: $white-color;
+}
+
+.top-social a:hover {
+	color: #000;
+}
+
+.navbar-nav li {
+	float: left;
+	position: relative;
+}
+
+.navbar-inverse {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 0;
+	margin-bottom: 0;
+	min-height: auto;
+	.navbar-nav li a {
+		color: $white-color;
+		padding: 55px 20px;
+		font-weight: 500;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+	.navbar-nav li a:focus,
+	.navbar-nav li a:hover {
+		background-color: rgba(0, 0, 0, 0);
+		color: $white-color;
+	}
+}
+
+.navbar-inverse .navbar-nav>li.open>a,
+.navbar-inverse .navbar-nav>li.open>a:hover,
+.navbar-inverse .navbar-nav>li.open>a:focus {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	color: $white-color;
+}
+
+.navbar-nav li .dropdown-menu {
+	border-radius: 0;
+	padding: 20px 20px 0px;
+}
+
+.navbar-nav li .dropdown-menu li::after {
+	bottom: 13px;
+}
+
+.dropdown-menu.arrow li {
+	width: 100%;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu.arrow a {
+	color: rgb(0, 0, 0) !important;
+	height: 30px;
+	margin: 0 0 18px;
+	padding: 0;
+}
+
+.top-nav {
+	padding: 20px 0;
+	.top-social {}
+	li {
+		display: inline;
+		margin-right: 10px;
+		margin-left: 0;
+		color: $base-color;
+		i {
+			color: $base-color;
+			font-size: 16px;
+			margin-right: 10px;
+		}
+	}
+	.top-social {
+		li {
+			margin-left: 0;
+			margin-right: 10px;
+			i {
+				margin-left: 10px;
+				margin-right: 0px;
+			}
+		}
+		a {
+			i {
+				color: $base-color;
+			}
+			i:hover {
+				color: $yellow-color;
+			}
+		}
+	}
+}
+
+.navbar-fixed-top {
+	transition: all 0.3s ease 0s;
+}
+
+.affix-top .in-mobile {
+	display: none;
+}
+
+.nav.navbar-nav li::after {
+	background: $white-color;
+	content: "";
+	height: 2px;
+	position: absolute;
+	width: 0;
+	transition: all 0.5s ease 0s;
+}
+
+.nav.navbar-nav li:hover::after {
+	width: 100%;
+}
+
+.affix {
+	background: $blue-color;
+	position: fixed;
+	.navbar-brand {
+		padding-top: 30px !important;
+	}
+	.nav.navbar-nav a {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.in-disktop {
+		display: none;
+	}
+	.in-mobile {
+		margin-top: 28px;
+	}
+}

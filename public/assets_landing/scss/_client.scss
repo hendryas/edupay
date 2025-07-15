@@ -1,0 +1,53 @@
+/*--- client ---*/
+
+.client {
+	background: $background01;
+	padding: 50px 0;
+	li {
+		display: inline;
+		float: left;
+		text-align: center;
+		width: 16.666666666666667%;
+			img {
+    filter: grayscale(100%);
+				opacity: .5;
+}
+			
+	}
+	li img:hover {
+    filter: grayscale(0);
+		opacity: 1;
+}
+	.item img {
+     filter: grayscale(100%);
+				opacity: .5;
+}
+.item img:hover {
+    filter: grayscale(0);
+		opacity: 1;
+}
+	.owl-controls.clickable {
+    display: none !important;
+}
+}
+
+/*--- client2 ---*/
+
+.client2 {
+	padding: 80px 0 100px;
+	li {
+		display: inline;
+		float: left;
+		text-align: center;
+		width: 16.666666666666667%;
+	}
+	h2
+	{
+		margin-bottom: 0;
+	}
+	.title
+	{
+		margin-bottom: 80px;
+	}
+}
+

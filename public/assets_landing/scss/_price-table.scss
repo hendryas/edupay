@@ -1,0 +1,52 @@
+/*--- price-table ---*/
+
+.price-table {
+	.price-box {
+		color: $hcolor;
+		border: 1px solid #eaeaea;
+		padding: 30px;
+		.tilte {
+			text-align: center;
+			font-size: 24px;
+			border-bottom: 1px solid #eaeaea;
+			padding-bottom: 20px;
+			margin-bottom: 20px;
+			h4 {
+				color: $titleFont-color;
+				margin-bottom: 20px;
+			}
+			strong {
+				color: $hcolor;
+				font-size: 36px;
+				font-weight: 500;
+			}
+		}
+		ul {
+			width: 60%;
+			margin: auto;
+			li {
+				margin-bottom: 30px;
+			}
+			li::before {
+				content: "";
+				font-family: fontawesome;
+				margin-right: 10px;
+				color: $titleFont-color;
+			}
+			li:last-child::before{
+				display: none;
+			}
+			a {
+				background: $titleFont-color;
+				padding: 10px 0;
+				width: 100%;
+				color: $white-color;
+				display: inline-block;
+				text-align: center;
+			}
+		}
+	}
+}
+.price-table .col-md-4:nth-child(2n+1 ) .price-box{
+		 box-shadow: 1px 14px 43px #0000001a;
+	}

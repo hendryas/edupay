@@ -1,0 +1,123 @@
+/*--- footer ---*/
+
+.footer {
+	background: $fcolor;
+	color: $white-color;
+	font-weight: 300;
+	line-height: 28px;
+	padding: 50px 0 0;
+	font-size: 14px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	a {
+		color: $white-color;
+	}
+	a:hover {
+		color: $titleFont-color;
+	}
+	.w80 {
+		float: left;
+		width: 80%;
+	}
+	.w50 {
+		float: left;
+		width: 50%;
+	}
+	.w50 li {
+		margin-bottom: 10px;
+	}
+	.weight h4 {
+		color: $white-color;
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 30px;
+		text-transform: uppercase;
+	}
+	.weight h5 a {
+		color: $white-color;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 24px;
+	}
+	.time {
+		font-size: 12px;
+		color: $primary-color;
+	}
+	.time::before {
+		color: $primary-color;
+		content: "";
+		font-family: fontawesome;
+		margin-right: 10px;
+	}	
+	.weight span {
+		display: inline-block;
+		width: 86%;
+	}
+	.weight h5 {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+	.weight li {
+		float: left;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.social-f {
+		li {
+			display: inline;
+			width: auto;
+			a {
+				width: 38px;
+				height: 38px;
+				line-height: 38px;
+				border: 1px solid $primary-color;
+				border-radius: 50%;
+				float: left;
+				text-align: center;
+				margin-right: 10px;				
+			}
+			a:hover{
+				background: $white-color;
+						border: 1px solid $white-color;
+			}
+		}
+	}
+	.news-later{
+		float: left;
+		width: 100%;
+		margin-top: 10px;
+		background: $newslatercolor;
+		input[type="email"]{
+			background: none;
+			border: none;
+			padding: 10px;
+			float: left;
+			width: 90%;
+		}
+		a{
+			margin-top: 10px;
+			float: left;
+			color: $primary-color;
+		}
+		a:hover{
+			color: $white-color;
+		}
+		
+	}
+	.flogo{
+		margin-bottom: 12px;
+	}
+}
+
+.copyright {
+	text-align: center;
+	color: $primary-color;
+	padding: 20px 0;
+	background: $copycolor;
+	margin-top: 50px;
+	font-size: 14px;
+	span {
+		color: $titleFont-color;
+	}
+}

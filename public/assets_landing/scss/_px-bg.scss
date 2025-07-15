@@ -1,0 +1,162 @@
+/*--- px-bg ---*/
+
+.px-vedio {
+	background: url(../images/px-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-align: center;
+	color: $white-color;
+	h2 {
+		font-size: 48px;
+		margin-bottom: 30px;
+	}
+	h5 {
+		font-weight: 200;
+		font-size: 24px;
+	}
+	p {
+		display: inline-block;
+		width: 50%;
+	}
+	.play-button {
+		display: block;
+		margin-top: 50px;
+		font-size: 18px;
+		color: $white-color;
+		img {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.px-bg {
+	padding: 80px 0 100px;
+	h2 {
+		color: $white-color;
+		font-weight: 600;
+		font-size: 38px;
+		line-height: 42px;
+	}
+	a {
+		background: $green-color;
+		box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+		color: $white-color;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 30px;
+		padding: 20px 40px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+	}
+	a:hover {
+		background: $blue-color;
+		margin-top: 32px;
+	}
+}
+.px-bg-counter {
+	background: url(../images/counter-bg.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 80px 0 100px;
+	text-align: center;
+	h2 {
+		color: $white-color;
+		font-weight: 600;
+		font-size: 46px;
+		line-height: 42px;
+	}
+	span {
+		font-style: italic;
+		color: $white-color;
+	}
+	a {
+		background: $green-color;
+		box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+		color: $white-color;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 30px;
+		padding: 20px 40px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+	}
+	a:hover {
+		background: $blue-color;
+		margin-top: 32px;
+	}
+}
+
+/*--- px-bg ---*/
+
+.px-bg2{
+	background: url(../images/call-action-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+	background-attachment: fixed;
+	color: $white-color;
+	h2 {
+		font-size: 48px;
+		margin-bottom: 30px;
+	}
+	h5 {
+		font-weight: 200;
+		font-size: 24px;
+	}
+	p {
+		display: inline-block;
+		width: 50%;
+	}
+	a {
+		display: inline-block;
+		margin-top: 20px;
+		font-size: 16px;
+		padding: 10px 30px;
+		color: $white-color;
+		background: $titleFont-color;
+	}
+	a:hover{
+		color: $titleFont-color;
+		background:  $white-color;
+		transition: all 0.5s ease 0s;
+	}
+}
+/*--- px-bg ---*/
+
+.px-bg3{
+	background: url(../images/px-services.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: $white-color;
+	h2 {
+		font-size: 48px;
+		margin-bottom: 30px;
+	}
+	h5 {
+		font-weight: 200;
+		font-size: 24px;
+	}
+	p {
+		display: inline-block;
+		width: 50%;
+	}
+	a {
+		display: inline-block;
+		margin-top: 20px;
+		font-size: 16px;
+		padding: 10px 30px;
+		color: $white-color;
+		background: $titleFont-color;
+	}
+	a:hover{
+		color: $titleFont-color;
+		background:  $white-color;
+		transition: all 0.5s ease 0s;
+	}
+}
+

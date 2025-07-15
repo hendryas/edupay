@@ -1,0 +1,83 @@
+
+/*--- main-header ---*/
+.main-header{
+	background: rgba(0, 0, 0, 0) url("../images/header.jpg") no-repeat scroll center 0 / cover;
+	background-attachment: fixed;
+}
+.main-header {	
+	height: 970px;
+	.item{
+		height: 850px;
+		background-size: cover;
+	}
+	.right-control {
+    border: 2px solid $base-color;
+    border-radius: 50%;
+    font-size: 44px;
+    height: 48px;
+    right: 30px;
+    line-height: 38px;
+    position: absolute;
+    color:$base-color;
+    text-align: center;
+    top: 48%;
+    width: 48px;
+    z-index: 99;
+}
+	.left-control {
+    border: 2px solid$base-color;
+    border-radius: 50%;
+    font-size: 44px;
+    height: 48px;
+    left: 30px;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 48%;
+    color: $base-color;
+    width: 48px;
+    z-index: 99;
+}
+}
+.main-header-text {
+	margin-top: 350px;
+}
+.main-header-text h3 {
+	color: $blue-color;
+}
+.main-header-text {
+	h2 {
+	font-size: 60px;
+	font-weight: 400;
+	color: $white-color;
+	width: 70%;
+	letter-spacing: $letter-spacing;
+	strong{
+		color: $yellow-color;
+	}
+}
+	h4{
+		width:70%;
+line-height: 30px;
+		margin-top: 20px;
+		color: $white-color;
+		font-weight: 300;
+	}
+}
+.main-header-text a {
+	background: $base-color;
+	box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+	color: $white-color;
+	display: inline-block;
+	margin-right: 20px;
+	margin-top: 50px;
+	padding: 20px 40px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+.main-header-text a:hover,
+.main-header-text a.active {
+	background: $darkbule2-color;
+}
+

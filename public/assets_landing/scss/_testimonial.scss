@@ -1,0 +1,148 @@
+
+/*--- testimonial ---*/
+
+.home-testimonial{
+	padding-top: 0;
+	
+	.testimonial-box{
+		border: 1px solid #eaeaea;
+		text-align: center;
+		padding: 30px;
+		    transition: all 0.5s ease 0s;
+		.text{
+			margin-bottom: 30px;
+			img{
+				margin-bottom: 20px;
+			}
+		}
+		.user{
+			img{
+				margin-bottom:5px;
+			}
+			h4{
+				color: $hcolor;
+				font-size: 16px;
+				margin-bottom: 0;
+			}
+			p{
+				color: $titleFont-color;
+				font-size: 14px;
+			}
+		}
+	}
+	.testimonial-box:hover{
+		 box-shadow: 1px 14px 43px #0000001a;
+	}
+}
+
+/*--- team ---*/
+
+.home-team{
+	
+	.team-box{
+		border: 1px solid #eaeaea;
+		text-align: center;
+		padding: 30px;
+		    transition: all 0.5s ease 0s;
+			.user{
+			img{
+				margin-bottom:50px;
+			}
+			h4{
+				color: $hcolor;
+				font-size: 16px;
+				margin-bottom: 0;
+			}
+			p{
+				color: $titleFont-color;
+				font-size: 14px;
+			}
+		}
+	}
+	.team-box:hover{
+		 box-shadow: 1px 14px 43px #0000001a;
+	}
+}
+
+
+/*--- testimonial ---*/
+
+.testimonial {
+	background: url("../images/client-bg.jpg") no-repeat;
+	background-size: cover;
+	padding: 100px 0 150px;
+	.title2{
+		h2{
+			color: $white-color;
+			font-size: 48px;
+			margin-top: 0;
+		}
+		h3{
+			color: $white-color;
+			font-weight: 200;
+		}
+	}
+	.caption p {
+		color: $white-color;
+		font-size: 16px;
+		margin: auto;
+		width: 40%;
+	}
+	.testimonial-img {
+		display: inline-block;
+		position: relative;
+		img {
+			border-radius: 50%;
+		}
+		.tcril {
+    position: absolute;
+    bottom: 25%;
+    width: 30px;
+    height: 30px;
+    background: #3ab753;
+    font-family: fontawesome;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 32px;
+    font-weight: 100;
+    right: -12px;
+}
+	}
+	h4 {
+		color: $titleFont-color;
+		font-size: 12px;
+		margin-bottom: 30px;
+		margin-bottom: 25px;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+	h2 {
+		margin-top: 0;
+		color: $white-color;
+		font-weight: 400;
+		margin-top: 30px;
+		font-size: 16px;
+	}
+	.left-control {
+		background: rgba(0, 0, 0, 0) url("../images/left-arrow.png") no-repeat scroll right 0;
+		height: 50px;
+		left: -63px;
+		padding: 6px 0 8px 73px;
+		position: absolute;
+		text-decoration: none;
+		top: 50%;
+		width: 134px;
+		z-index: 9;
+	}	
+	.right-control {
+		background: rgba(0, 0, 0, 0) url("../images/right-arrow.png") no-repeat scroll left 0;
+		padding: 6px 73px 8px 0;
+		height: 50px;
+		width: 134px;
+		position: absolute;
+		right: -63px;
+		text-decoration: none;
+		top: 50%;
+		z-index: 9;
+	}	
+}
