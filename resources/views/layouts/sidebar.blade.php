@@ -75,6 +75,19 @@
                             <li class="sidebar-item has-sub">
                                 <a href="#" class="sidebar-link">
                                     <i class="bi bi-journal-check"></i>
+                                    <span>Management</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="{{ route('billingtype.index') }}" class="submenu-link">
+                                            Kelola Jenis Tagihan</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class="sidebar-link">
+                                    <i class="bi bi-journal-check"></i>
                                     <span>Laporan</span>
                                 </a>
                                 <ul class="submenu">

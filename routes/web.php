@@ -100,6 +100,7 @@ Route::middleware(['auth'])->prefix('billingtype')->name('billingtype.')->group(
     Route::get('/', [BillingTypeController::class, 'index'])->name('index');
     Route::post('/add', [BillingTypeController::class, 'store'])->name('store');
     Route::put('/update/{id}', [BillingTypeController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [BillingTypeController::class, 'destroy'])->name('destroy');
 });
 
 

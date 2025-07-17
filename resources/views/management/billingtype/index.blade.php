@@ -310,6 +310,7 @@
             // Delete Data
             $('.btn-delete').on('click', function() {
                 const userId = $(this).data('id');
+                console.log(userId)
 
                 Swal.fire({
                     title: 'Yakin ingin menghapus?',
@@ -321,7 +322,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: '/admin/billing-types/' + userId,
+                            url: '/billingtype/delete/' + userId,
                             type: 'POST',
                             data: {
                                 _method: 'DELETE',

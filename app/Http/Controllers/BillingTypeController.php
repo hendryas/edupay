@@ -31,7 +31,7 @@ class BillingTypeController extends Controller
 
         return response()->json([
             'message' => 'Billing Type created successfully!',
-            'redirect' => route('admin.billing-types.index')
+            'redirect' => route('billingtype.index')
         ]);
     }
 
@@ -62,11 +62,14 @@ class BillingTypeController extends Controller
         ]);
     }
 
-    public function destroy(BillingType $BillingType)
+    public function destroy($id)
     {
-        $BillingType->delete();
+        $billingType = BillingType::findOrFail($id);
+
+        $billingType->delete();
+
         return response()->json([
-            'message' => 'Jenis Pembiayaan deleted successfully'
+            'message' => 'Jenis Pembiayaan berhasil dihapus'
         ]);
     }
 }
