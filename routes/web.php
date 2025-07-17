@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillingTypeController;
 use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RegistrationSchoolController;
@@ -95,7 +96,11 @@ Route::middleware(['auth'])->prefix('kwitansi')->name('kwitansi.')->group(functi
     Route::get('/{id}/cetak', [KwitansiController::class, 'cetak'])->name('cetak');
 });
 
-
+Route::middleware(['auth'])->prefix('billingtype')->name('billingtype.')->group(function () {
+    Route::get('/', [BillingTypeController::class, 'index'])->name('index');
+    Route::post('/add', [BillingTypeController::class, 'store'])->name('store');
+    Route::put('/update/{id}', [BillingTypeController::class, 'update'])->name('update');
+});
 
 
 require __DIR__.'/auth.php';

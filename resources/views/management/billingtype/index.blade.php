@@ -181,7 +181,7 @@
                 });
 
                 $.ajax({
-                    url: "{{ route('admin.billing-types.store') }}", // sesuaikan route kamu
+                    url: "{{ route('billingtype.store') }}", // sesuaikan route kamu
                     type: "POST",
                     data: formData,
                     success: function(res) {
@@ -265,7 +265,7 @@
                 });
 
                 $.ajax({
-                    url: "/admin/billing-types/" + id, // Sesuaikan route update
+                    url: "/billingtype/update/" + id, // Sesuaikan route update
                     type: "POST",
                     data: formData,
                     success: function(res) {
