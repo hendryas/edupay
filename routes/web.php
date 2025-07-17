@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\BillingParentController;
 use App\Http\Controllers\BillingTypeController;
 use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationSchoolController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\TagihanController;
@@ -26,6 +29,11 @@ Route::get('/home', function () {
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+    // Payment
+Route::post('/payment/token', [PaymentController::class, 'getSnapToken'])->name('payment.token');
+// WebHook Payment
+Route::post('/midtrans/callback', [MidtransController::class, 'handle']);
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -103,5 +111,11 @@ Route::middleware(['auth'])->prefix('billingtype')->name('billingtype.')->group(
     Route::delete('/delete/{id}', [BillingTypeController::class, 'destroy'])->name('destroy');
 });
 
+Route::middleware(['auth'])->prefix('billing-parent')->name('billingparent.')->group(function () {
+    Route::get('/', [BillingParentController::class, 'index'])->name('index');
+    Route::post('/store', [BillingParentController::class, 'store'])->name('store');
+    Route::put('/update/{id}', [BillingParentController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [BillingParentController::class, 'destroy'])->name('destroy');
+});
 
 require __DIR__.'/auth.php';

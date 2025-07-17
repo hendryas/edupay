@@ -124,7 +124,7 @@ class TransaksiController extends Controller
 
         if ($getUser->no_hp) {
             $pesan = "Halo {$getUser->nama_lengkap},\n\n" .
-                    "Bukti pembayaran pendaftaran sekolah untuk tagihan *{$tagihan->nama_tagihan}* telah berhasil diunggah.\n\n" .
+                    "Bukti pembayaran untuk tagihan *{$tagihan->nama_tagihan}* telah berhasil diunggah.\n\n" .
                     "Silakan menunggu proses *verifikasi oleh admin*. Kami akan segera menginformasikan statusnya.\n\n" .
                     "Terima kasih atas kerja samanya 🙏\n\n" .
                     "*SMK Tunas Harapan*";

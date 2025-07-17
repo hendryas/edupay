@@ -82,6 +82,10 @@
                                         <a href="{{ route('billingtype.index') }}" class="submenu-link">
                                             Kelola Jenis Tagihan</a>
                                     </li>
+                                    <li class="submenu-item">
+                                        <a href="{{ route('billingparent.index') }}" class="submenu-link">
+                                            Kelola Tagihan Orang Tua</a>
+                                    </li>
                                 </ul>
                             </li>
 
@@ -206,6 +210,11 @@
                                     <li class="submenu-item">
                                         <a href="{{ route('billingtype.index') }}" class="submenu-link">
                                             Kelola Jenis Tagihan</a>
+                                    </li>
+
+                                    <li class="submenu-item">
+                                        <a href="{{ route('billingparent.index') }}" class="submenu-link">
+                                            Kelola Tagihan Orang Tua</a>
                                     </li>
                                 </ul>
                             </li>

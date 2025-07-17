@@ -29,6 +29,7 @@
                                 {{ ucfirst($tagihan->status_pembayaran) }}
                             </span>
                         </li>
+                        <li class="list-group-item"><strong>No. Rekening:</strong> 1928782562 (BCA)</li>
                     </ul>
                 </div>
 

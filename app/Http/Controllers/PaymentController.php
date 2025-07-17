@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Midtrans\Snap;
 use Midtrans\Config;
@@ -20,11 +21,12 @@ class PaymentController extends Controller
     public function getSnapToken(Request $request)
     {
         $tagihan = Tagihan::findOrFail($request->id);
-
+        $siswa = Siswa::find($tagihan->siswa_id);
+        // 'order_id' => 'TAGIHAN-' . $tagihan->id . '-' . time(),
         $params = [
             'payment_type' => 'bank_transfer',
             'transaction_details' => [
-                'order_id' => 'TAGIHAN-' . $tagihan->id . '-' . time(),
+                'order_id' => $tagihan->id,
                 'gross_amount' => (int) $tagihan->nominal,
             ],
             'bank_transfer' => [
@@ -39,8 +41,9 @@ class PaymentController extends Controller
                 ]
             ],
             'customer_details' => [
-                'first_name' => 'Siswa',
+                'first_name' => $siswa->nama ?? 'Siswa',
                 'email' => 'dummy@example.com',
+                'phone' => $siswa->nomor_wa ?? null,
             ],
         ];
 

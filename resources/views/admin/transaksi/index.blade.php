@@ -76,11 +76,17 @@
 
                                                     @if ($trx->status_pembayaran == 'pending')
                                                         <div class="d-grid gap-2">
-                                                            {{-- Redirect ke halaman form pembayaran VA --}}
-                                                            <a href="{{ route('tagihan.va.form', $trx->id) }}"
-                                                                class="btn btn-success btn-sm">
-                                                                Bayar Sekarang via Virtual Account
-                                                            </a>
+
+                                                            <a href="javascript:void(0)"
+                                                                class="btn btn-sm btn-warning btn-payment"
+                                                                data-id="{{ $trx->id }}"
+                                                                data-siswa-id="{{ $trx->siswa_id }}"
+                                                                data-biling-type-id="{{ $trx->biling_type_id }}"
+                                                                data-nama-tagihan="{{ $trx->nama_tagihan }}"
+                                                                data-nominal="{{ $trx->nominal }}"
+                                                                data-periode="{{ $trx->periode }}"
+                                                                data-deskripsi="{{ $trx->deskripsi }}">Bayar Sekarang via
+                                                                Virtual Account</a>
 
                                                             {{-- Redirect ke halaman form upload bukti transfer --}}
                                                             <a href="{{ route('tagihan.upload.form', $trx->id) }}"
@@ -109,4 +115,45 @@
             </div>
         </div>
     </section>
+
+
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-payment').click(function() {
+                let id = $(this).data('id');
+
+                $.ajax({
+                    url: '{{ route('payment.token') }}',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        window.snap.pay(response.snapToken, {
+                            onSuccess: function(result) {
+                                alert('Pembayaran sukses!');
+                                console.log(result);
+                                // TODO: Kirim ke server untuk update status pembayaran
+                            },
+                            onPending: function(result) {
+                                alert('Menunggu pembayaran...');
+                                console.log(result);
+                            },
+                            onError: function(result) {
+                                alert('Pembayaran gagal!');
+                                console.log(result);
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Gagal mengambil snap token');
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection
