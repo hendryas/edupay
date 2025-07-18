@@ -7,4 +7,4 @@ use App\Http\Controllers\MidtransController;
 // =============================
 // Webhook Midtrans (VA, QRIS, dsb.)
 // =============================
-Route::post('/midtrans/callback', [MidtransController::class, 'handle']);
+Route::post('midtrans/callback', [MidtransController::class, 'handle']);

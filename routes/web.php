@@ -30,10 +30,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-    // Payment
+// Payment
 Route::post('/payment/token', [PaymentController::class, 'getSnapToken'])->name('payment.token');
 // WebHook Payment
-Route::post('/midtrans/callback', [MidtransController::class, 'handle']);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -78,8 +78,6 @@ Route::middleware('auth')->group(function () {
         // Admin
         Route::get('/tagihan/pendaftaran', [TagihanController::class, 'dataPendaftaran'])->name('pendaftaran');
         Route::post('/tagihan/verifikasi', [TagihanController::class, 'veriftagihan'])->name('veriftagihan');
-
-
     });
 });
 
@@ -95,7 +93,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::prefix('riwayat')->name('riwayat.')->group(function () {
         Route::get('/pembayaran', [RiwayatController::class, 'index'])->name('pembayaran');
-  });
+    });
 });
 
 Route::middleware(['auth'])->prefix('kwitansi')->name('kwitansi.')->group(function () {
@@ -118,4 +116,4 @@ Route::middleware(['auth'])->prefix('billing-parent')->name('billingparent.')->g
     Route::delete('/delete/{id}', [BillingParentController::class, 'destroy'])->name('destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

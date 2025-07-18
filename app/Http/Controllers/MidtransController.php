@@ -25,7 +25,7 @@ class MidtransController extends Controller
             $tagihanId = $orderId;
 
             if ($tagihanId) {
-                $tagihan = Tagihan::find(16);
+                $tagihan = Tagihan::find($tagihanId);
                 if ($tagihan) {
                     $tagihan->status_pembayaran = 'lunas';
                     $tagihan->save();
