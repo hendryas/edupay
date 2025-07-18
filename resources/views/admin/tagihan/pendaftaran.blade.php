@@ -12,7 +12,7 @@
     <section class="section">
         <div class="card">
             <div class="card-body table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="pendaftaranTable">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -162,6 +162,16 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#pendaftaranTable').DataTable();
         });
     </script>
 

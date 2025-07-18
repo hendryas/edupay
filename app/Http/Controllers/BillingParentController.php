@@ -40,7 +40,7 @@ class BillingParentController extends Controller
         $billingTypes = BillingType::findOrFail($request->billing_type_id);
         $nama_tagihan = $billingTypes->name;
         $amount = $billingTypes->amount;
-        $periode = now()->format('Y-m');
+        $periode = now()->format('F Y');
 
         $tagihanId = DB::table('tagihan')->insert([
             'siswa_id' => $orangTua->siswa_id,
@@ -55,16 +55,16 @@ class BillingParentController extends Controller
         $siswa = DB::table('siswa')->where('id', $orangTua->siswa_id)->first();
 
         $pesan = "📢 *Informasi Tagihan*\n\n" .
-         "Yth. Bapak/Ibu *{$orangTua->nama_lengkap}*,\n" .
-         "Kami informasikan bahwa *tagihan* untuk ananda *{$siswa->nama}* telah diterbitkan dengan rincian berikut:\n\n" .
-         "🔹 *Jenis Tagihan:* {$nama_tagihan}\n" .
-         "🔹 *Jumlah:* Rp" . number_format($amount, 0, ',', '.') . "\n" .
-         "🔹 *Status:* Belum dibayar (pending)\n\n" .
-         "Mohon untuk segera melakukan pembayaran agar proses administrasi berjalan lancar.\n\n" .
-         "Jika Bapak/Ibu memiliki pertanyaan lebih lanjut, silakan hubungi pihak administrasi sekolah.\n\n" .
-         "Terima kasih atas perhatian dan kerja samanya 🙏\n\n" .
-         "*SMK Tunas Harapan*";
-         \App\Services\FonnteService::send($orangTua->no_hp, $pesan);
+            "Yth. Bapak/Ibu *{$orangTua->nama_lengkap}*,\n" .
+            "Kami informasikan bahwa *tagihan* untuk ananda *{$siswa->nama}* telah diterbitkan dengan rincian berikut:\n\n" .
+            "🔹 *Jenis Tagihan:* {$nama_tagihan}\n" .
+            "🔹 *Jumlah:* Rp" . number_format($amount, 0, ',', '.') . "\n" .
+            "🔹 *Status:* Belum dibayar (pending)\n\n" .
+            "Mohon untuk segera melakukan pembayaran agar proses administrasi berjalan lancar.\n\n" .
+            "Jika Bapak/Ibu memiliki pertanyaan lebih lanjut, silakan hubungi pihak administrasi sekolah.\n\n" .
+            "Terima kasih atas perhatian dan kerja samanya 🙏\n\n" .
+            "*SMK Tunas Harapan*";
+        \App\Services\FonnteService::send($orangTua->no_hp, $pesan);
 
         return response()->json(['success' => true]);
     }

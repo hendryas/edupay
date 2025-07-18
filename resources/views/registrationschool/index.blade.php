@@ -3,6 +3,7 @@
 @section('title', 'Formulir Pendaftaran Siswa')
 
 @section('content')
+
     <div class="page-heading">
         <h3>Formulir Pendaftaran Sekolah</h3>
     </div>
@@ -138,6 +139,7 @@
     </section>
 
     {{-- =============== SweetAlert & AJAX =============== --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
@@ -150,7 +152,8 @@
                 let formData = new FormData(this);
 
                 Swal.fire({
-                    title: 'Mengirim...',
+                    title: 'Mohon tunggu',
+                    html: 'Sedang memproses pendaftaran siswa...',
                     allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading();
@@ -167,8 +170,10 @@
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil!',
-                            text: 'Pendaftaran berhasil dikirim.',
-                            timer: 2000,
+                            html: `<strong>${res.message}</strong><br>
+                               Tagihan: <b>${res.tagihan.nama}</b><br>
+                               Jumlah: Rp ${res.tagihan.jumlah}`,
+                            timer: 3000,
                             showConfirmButton: false
                         }).then(() => {
                             location.reload();
