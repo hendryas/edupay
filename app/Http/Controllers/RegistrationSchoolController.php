@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BillingType;
 use App\Models\OrangTua;
+use App\Models\PekerjaanOrtu;
 use App\Models\RegistrationSchool;
 use App\Models\Siswa;
 use App\Models\Tagihan;
@@ -25,7 +26,9 @@ class RegistrationSchoolController extends Controller
             return view('registrationschool.sudah_daftar');
         }
 
-        return view('registrationschool.index');
+        $pekerjaan_ortu = PekerjaanOrtu::all();
+
+        return view('registrationschool.index', compact('pekerjaan_ortu'));
     }
 
     public function store(Request $request)
@@ -41,6 +44,7 @@ class RegistrationSchoolController extends Controller
             'wali_jenis_kelamin' => 'required|string',
             'wali_pekerjaan' => 'required|string',
             'hubungan_dengan_siswa' => 'required|string',
+            'wali_pekerjaan_lainnya' => $request->wali_pekerjaan === 'Lainnya' ? 'required|string|max:100' : 'nullable',
 
             // Data Siswa
             'siswa_nama' => 'required|string|max:255',
@@ -79,6 +83,19 @@ class RegistrationSchoolController extends Controller
                 ? $request->file('ijazah_terakhir')->store($ijazahPath, 'public')
                 : null;
 
+            if ($request->wali_pekerjaan === 'Lainnya' && $request->wali_pekerjaan_lainnya) {
+                \App\Models\PekerjaanOrtu::firstOrCreate([
+                    'nama_pekerjaan' => $request->wali_pekerjaan_lainnya
+                ], [
+                    'kode_pekerjaan' => strtoupper(substr($request->wali_pekerjaan_lainnya, 0, 3)) . rand(100, 999)
+                ]);
+            }
+
+            // Ambil pekerjaan dari dropdown atau input manual jika "Lainnya"
+            $pekerjaanOrtu = $request->wali_pekerjaan === 'Lainnya'
+                ? $request->wali_pekerjaan_lainnya
+                : $request->wali_pekerjaan;
+
             // Buat data orang tua
             $orangTua = OrangTua::create([
                 'user_id' => $user_id,
@@ -86,7 +103,7 @@ class RegistrationSchoolController extends Controller
                 'no_hp' => $validated['wali_hp'],
                 'alamat' => $validated['wali_alamat'],
                 'jenis_kelamin' => $validated['wali_jenis_kelamin'],
-                'pekerjaan' => $validated['wali_pekerjaan'],
+                'pekerjaan' => $pekerjaanOrtu,
                 'hubungan_dengan_siswa' => $validated['hubungan_dengan_siswa'],
             ]);
 
@@ -150,10 +167,10 @@ class RegistrationSchoolController extends Controller
 
             if ($orangTua->no_hp) {
                 $pesan = "Halo {$orangTua->nama_lengkap},\n\n" .
-                        "Kami informasikan bahwa *tagihan pendaftaran sekolah* untuk ananda *{$siswa->nama}* dengan rincian *{$tagihan->nama_tagihan}* sebesar *Rp" . number_format($tagihan->nominal, 0, ',', '.') . "* masih *belum dibayar*.\n\n" .
-                        "Segera lakukan pembayaran agar proses pendaftaran dapat dilanjutkan.\n\n" .
-                        "Terima kasih atas perhatian dan kerja samanya 🙏\n\n" .
-                        "*SMK Tunas Harapan*";
+                    "Kami informasikan bahwa *tagihan pendaftaran sekolah* untuk ananda *{$siswa->nama}* dengan rincian *{$tagihan->nama_tagihan}* sebesar *Rp" . number_format($tagihan->nominal, 0, ',', '.') . "* masih *belum dibayar*.\n\n" .
+                    "Segera lakukan pembayaran agar proses pendaftaran dapat dilanjutkan.\n\n" .
+                    "Terima kasih atas perhatian dan kerja samanya 🙏\n\n" .
+                    "*SMK Tunas Harapan*";
                 \App\Services\FonnteService::send($orangTua->no_hp, $pesan);
             }
 
