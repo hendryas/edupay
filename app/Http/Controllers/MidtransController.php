@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tagihan;
-use Illuminate\Http\Request;
+use App\Models\TransaksiPembayaran;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class MidtransController extends Controller
 {
@@ -18,19 +19,31 @@ class MidtransController extends Controller
         $status = $payload['transaction_status'] ?? null;
 
         if ($orderId && $status === 'settlement') {
-            // TODO: Update database status ke 'lunas'
-            // Log::info("Transaksi $orderId berhasil, update status ke lunas");
-            // $exploded = explode('-', $orderId); // TAGIHAN-15-1721212000
-            // $tagihanId = $exploded[1] ?? null;
-            $tagihanId = $orderId;
+            $tagihanId = $orderId; // Atau pecah jika perlu: explode('-', $orderId)[1]
+            $paymentMethod = $payload['payment_type'] ?? 'midtrans';
+            $paidAt = $payload['settlement_time'] ?? now();
+            $vaNumber = $payload['va_numbers'][0]['va_number'] ?? null;
 
-            if ($tagihanId) {
-                $tagihan = Tagihan::find($tagihanId);
-                if ($tagihan) {
-                    $tagihan->status_pembayaran = 'lunas';
-                    $tagihan->save();
-                    Log::info("Tagihan ID $tagihanId diupdate ke lunas");
-                }
+            $tagihan = Tagihan::find($tagihanId);
+            if ($tagihan && $tagihan->status_pembayaran !== 'lunas') {
+                // Update tagihan
+                $tagihan->status_pembayaran = 'lunas';
+                $tagihan->save();
+                Log::info("Tagihan ID $tagihanId diupdate ke lunas");
+
+                // Buat transaksi pembayaran
+                TransaksiPembayaran::create([
+                    'siswa_id'        => $tagihan->siswa_id,
+                    'tagihan_id'      => $tagihan->id,
+                    'tanggal_bayar'   => \Carbon\Carbon::parse($paidAt)->format('Y-m-d'),
+                    'jumlah_bayar'    => $tagihan->nominal,
+                    'metode'          => 'virtual account',
+                    'status'          => 'lunas',
+                    'dibuat_oleh'     => 'system', // Karena via webhook, bukan user langsung
+                    'bukti_transfer'  => $vaNumber,
+                ]);
+
+                Log::info("Transaksi pembayaran berhasil dicatat untuk Tagihan ID $tagihanId");
             }
         }
 

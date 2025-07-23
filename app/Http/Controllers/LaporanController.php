@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
-     public function index()
+    public function index()
     {
         $tagihanList = DB::table('tagihan as t')
             ->leftJoin('siswa as s', 't.siswa_id', '=', 's.id')
@@ -37,7 +37,7 @@ class LaporanController extends Controller
         return Excel::download(new TagihanPendaftaranExport, 'laporan_tagihan_pendaftaran.xlsx');
     }
 
-     public function rekapIndex()
+    public function rekapIndex()
     {
         return view('admin.laporan.rekap_bulanan_index');
     }
