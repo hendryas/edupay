@@ -30,6 +30,7 @@
 <body>
     <div class="kwitansi-box">
         <h2>Kwitansi Pembayaran</h2>
+
         <div class="info">Nama Siswa: <strong>{{ $data->nama_siswa }}</strong></div>
         <div class="info">Tagihan: {{ $data->nama_tagihan }}</div>
         <div class="info">Periode: {{ $data->periode }}</div>
@@ -37,8 +38,21 @@
         <div class="info">Tanggal Bayar: {{ \Carbon\Carbon::parse($data->tanggal_bayar)->format('d M Y') }}</div>
         <div class="info">Jumlah Bayar: <strong>Rp{{ number_format($data->jumlah_bayar, 0, ',', '.') }}</strong></div>
 
-        <p style="margin-top: 40px;">Bendahara,</p>
-        <p style="margin-top: 60px;">_______________________</p>
+        <p style="margin-top: 30px;">
+            Dengan ini kami menyatakan bahwa pembayaran telah diterima dengan jumlah dan rincian sebagaimana tersebut di
+            atas.
+        </p>
+
+        <div class="signature">
+            <p>Hormat kami,</p>
+            <p>Bendahara,</p>
+
+            {{-- Gambar tanda tangan --}}
+            <img src="{{ public_path('images/ttd_bendahara.jpeg') }}" alt="Tanda Tangan" height="60">
+
+            {{-- Nama bendahara --}}
+            <p style="margin-top: 10px;">_______________________</p>
+        </div>
     </div>
 </body>
 

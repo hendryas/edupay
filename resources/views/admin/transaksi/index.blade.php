@@ -22,6 +22,7 @@
                             <th>Tagihan</th>
                             <th>Nominal</th>
                             <th>Status</th>
+                            <th>Tanggal Verifikasi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -38,6 +39,7 @@
                                         {{ ucfirst($trx->status_pembayaran) }}
                                     </span>
                                 </td>
+                                <td>{{ $trx->updated_at ?? '-' }}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#modalTagihan{{ $trx->id }}">

@@ -19,21 +19,23 @@ class RekapTransaksiBulananExport implements FromCollection, WithHeadings, Shoul
 
     public function collection()
     {
-        $data = DB::table('transaksi_pembayaran as t')
-            ->leftJoin('tagihan as tg', 't.tagihan_id', '=', 'tg.id')
-            ->leftJoin('siswa as s', 't.siswa_id', '=', 's.id')
-            ->whereMonth('t.tanggal_bayar', $this->bulan)
-            ->whereYear('t.tanggal_bayar', $this->tahun)
-            ->where('tg.biling_type_id', 1)
-            ->orderBy('t.tanggal_bayar', 'desc')
+        $data = DB::table('tagihan as tg')
+            ->leftJoin('siswa as s', 'tg.siswa_id', '=', 's.id')
+            ->where('tg.status_pembayaran', 'lunas')
+            ->whereMonth('tg.updated_at', $this->bulan)
+            ->whereYear('tg.updated_at', $this->tahun)
+            ->orderBy('tg.updated_at', 'desc')
             ->select(
                 's.nama as nama_siswa',
                 'tg.nama_tagihan',
                 'tg.periode',
-                't.jumlah_bayar',
-                't.metode',
-                't.status',
-                't.tanggal_bayar'
+                'tg.nominal as jumlah_bayar',
+                DB::raw("CASE
+                WHEN tg.deskripsi LIKE '%Tagihan otomatis setelah pendaftaran%' THEN 'Virtual Account'
+                ELSE 'Manual/Upload'
+            END as metode"),
+                DB::raw("'Lunas' as status"),
+                'tg.updated_at as tanggal_bayar'
             )
             ->get();
 
@@ -51,6 +53,7 @@ class RekapTransaksiBulananExport implements FromCollection, WithHeadings, Shoul
 
         return $data;
     }
+
 
     public function headings(): array
     {

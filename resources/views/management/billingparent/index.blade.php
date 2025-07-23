@@ -28,7 +28,6 @@
                                 <th>Nominal</th>
                                 <th>Nama Siswa</th>
                                 <th>Nama Orang Tua</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +38,6 @@
                                     <td>Rp{{ number_format($tagihan->nominal_tagihan, 0, ',', '.') }}</td>
                                     <td>{{ $tagihan->nama_siswa }}</td>
                                     <td>{{ $tagihan->nama_orang_tua }}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning btn-edit"
-                                            data-id="{{ $tagihan->id }}">Edit</a>
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -67,11 +62,12 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="orang_tua_id" class="form-label">Pilih Orang Tua</label>
-                            <select name="orang_tua_id" id="orang_tua_id" class="form-select" required>
+                            <select name="orang_tua_id[]" id="orang_tua_id" class="form-select" multiple required>
                                 @foreach ($orangTua as $ortu)
                                     <option value="{{ $ortu->id }}">{{ $ortu->nama_lengkap }}</option>
                                 @endforeach
                             </select>
+                            <small class="text-muted">Gunakan Ctrl / Cmd untuk memilih lebih dari satu</small>
                             <div class="invalid-feedback" id="error-orang_tua_id"></div>
                         </div>
 

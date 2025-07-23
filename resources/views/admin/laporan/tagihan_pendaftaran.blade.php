@@ -15,10 +15,6 @@
                     <i class="bi bi-file-earmark-excel"></i> Export Excel
                 </a>
 
-                <button onclick="window.print()" class="btn btn-primary mb-3">
-                    <i class="bi bi-printer"></i> Cetak
-                </button>
-
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>

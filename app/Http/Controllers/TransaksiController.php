@@ -125,7 +125,8 @@ class TransaksiController extends Controller
         if ($getUser->no_hp) {
             $pesan = "Halo {$getUser->nama_lengkap},\n\n" .
                     "Bukti pembayaran untuk tagihan *{$tagihan->nama_tagihan}* telah berhasil diunggah.\n\n" .
-                    "Silakan menunggu proses *verifikasi oleh admin*. Kami akan segera menginformasikan statusnya.\n\n" .
+                    "Silakan menunggu proses *verifikasi oleh admin*. Proses validasi akan dilakukan dalam waktu maksimal *3x24 jam*.\n\n" .
+                    "Kami akan segera menginformasikan statusnya setelah proses verifikasi selesai.\n\n" .
                     "Terima kasih atas kerja samanya 🙏\n\n" .
                     "*SMK Tunas Harapan*";
             \App\Services\FonnteService::send($getUser->no_hp, $pesan);

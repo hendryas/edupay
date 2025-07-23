@@ -10,6 +10,7 @@ use App\Http\Controllers\RegistrationSchoolController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -26,8 +27,12 @@ Route::get('/home', function () {
 })->name('home');
 
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
+Route::middleware(['auth', 'verified'])
+    ->get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])
     ->name('dashboard');
 
 // Payment
@@ -115,5 +120,13 @@ Route::middleware(['auth'])->prefix('billing-parent')->name('billingparent.')->g
     Route::put('/update/{id}', [BillingParentController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [BillingParentController::class, 'destroy'])->name('destroy');
 });
+
+Route::middleware(['auth'])->prefix('manajemen-user')->name('user.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/create', [UserController::class, 'create'])->name('create');
+    Route::post('/store', [UserController::class, 'store'])->name('store');
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
+});
+
 
 require __DIR__ . '/auth.php';
